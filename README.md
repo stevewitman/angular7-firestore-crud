@@ -1,27 +1,37 @@
-# Angular7firestore
+tutorial from https://www.youtube.com/watch?v=5I6k77uqtLY
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+ng new angular7firestore
+routing? n
 
-## Development server
+cd angular7firestore
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+npm i --s firebase @angular/fire
 
-## Code scaffolding
+on firebase.com ... create project ... goto </> and copy firebase object
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+in environments/enviroments.ts ... add "firebaseConfig: { (object from firebase) }"
+  export const environment = {
+    production: false,
+    firebaseConfig: {
+      apiKey: "AIzaSyAP5oKx62tcc_TJanJF9KuhviIwilNI0wo",
+      authDomain: "try-firestore-sw.firebaseapp.com",
+      databaseURL: "https://try-firestore-sw.firebaseio.com",
+      projectId: "try-firestore-sw",
+      storageBucket: "try-firestore-sw.appspot.com",
+      messagingSenderId: "707425237107"
+    }
+  };
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+in app.module.ts ... import AngularFireModule and AngularFirestoreModule
+  import { AngularFireModule } from '@angular/fire';
+  import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-## Running unit tests
+    imports: [
+      BrowserModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      AngularFirestoreModule
+    ],
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ng s -o
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
