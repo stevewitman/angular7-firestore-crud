@@ -3,6 +3,7 @@ import { EmployeeService } from '../../shared/employee.service';
 import { NgForm } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -11,7 +12,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(public service: EmployeeService, private firestore: AngularFirestore) { }
+  constructor(public service: EmployeeService,
+    private firestore: AngularFirestore,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.formData = {
@@ -40,6 +43,7 @@ export class EmployeeComponent implements OnInit {
     const data = form.value;
     this.firestore.collection('employees').add(data);
     this.resetForm(form);
+    this.toastr.success('Submitted successfully', 'Emp Register');
   }
 
 }
