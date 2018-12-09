@@ -1,5 +1,5 @@
 <h4 class="display-4">EMP Register</h4>
-<form #form="ngForm" autocomplete="off">
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
   <div class="form-group">
     <input
       name="fullName"
